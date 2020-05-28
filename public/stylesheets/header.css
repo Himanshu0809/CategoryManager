@@ -1,0 +1,112 @@
+.navbar{
+    padding: 0;
+    height: 70px;
+    background: #262626;
+    z-index: 9999;
+}
+
+.navbar-brand{
+    padding-left: 20px;
+    float: left;
+    line-height: 70px;
+    text-transform: uppercase;
+    font-size: 1.4em;
+}
+.nav-dropdown {
+    position: absolute;
+    text-decoration: none;
+    display: none;
+    z-index: 1;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+.nav-dropdown li{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.navbar button{
+    background-color: #FF4B2B;
+    border-color:#FF4B2B;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.navbar-collapse ul li a, .navbar-collapse ul li a:visited {
+    display: block;
+    padding: 0 20px;
+    line-height: 70px;
+    background: #262626;
+    color: #fff;
+    text-decoration: none;
+}
+.navbar-collapse ul li a:hover, .navbar-collapse ul li a:visited:hover {
+    background: #2581dc;
+    color: #fff;
+}
+  .navbar-survival101 {
+    background-color:#262626;
+  }
+  
+  .navbar-survival101 .navbar-brand img {
+    vertical-align: baseline;
+  }
+  
+  .navbar-expand-lg .navbar-nav .nav-link {
+    color: #fff;
+  }
+  
+  .search-box {
+    position: relative;
+    height: 34px;
+  }
+  .search-box input {
+    border: 0;
+    border-radius: 3px !important;
+    padding-right: 28px;
+    font-size: 15px;
+  }
+  
+  .search-box .input-group-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+  }
+  
+  .search-box .input-group-btn button {
+    background-color: transparent;
+    border: 0;
+    padding: 4px 8px;
+    color: rgba(0,0,0,.4);
+    font-size: 20px;
+  }
+  
+  .search-box .input-group-btn button:hover,
+  .search-box .input-group-btn button:active,
+  .search-box .input-group-btn button:focus {
+    color: rgba(0,0,0,.4);
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+      padding-right: .7rem;
+      padding-left: .7rem;
+    }
+    
+    .search-box {
+      width: 300px !important;
+    }
+  }
+  
+  @media only screen and (max-width: 798px) {
+    .nav-dropdown {
+        position: static;
+   }
+}
+
+.navbar form{
+    padding: 12px;
+    margin-left:10px;
+}
