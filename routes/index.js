@@ -61,16 +61,24 @@ router.get("/logout", function (req, res) {
 
 router.get("/category", function (req, res) {
     //get all the categories
-    res.render('category');
+    Category.find({}, function (err, allcategories) {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.render("category", { categories: allcategories, currentUser: req.user });
+        }
+    })
 })
 
-router.post("/category", async function (req, res) {
-
-    var category = new Category({ name: req.body.name })
+router.post("/category",middleware.isLoggedIn, async function (req, res) {
+    let parent = req.body.parent ? req.body.parent : null;
+    const category = new Category({ name: req.body.name, parent })
     console.log(req.body.name);
     console.log(category);
     try {
         let newCategory = await category.save();
+        buildAncestors(newCategory._id, parent);
         console.log(newCategory);
         res.status(201).send({ response: `Category ${newCategory._id}` });
     } catch (err) {
@@ -80,4 +88,18 @@ router.post("/category", async function (req, res) {
 
 })
 
+const buildAncestors = async (id, parent_id) => {
+    let ancest = [];
+    try {
+        let parent_category = await Category.findOne({ "_id": parent_id }, { "name": 1, "slug": 1, "ancestors": 1 }).exec();
+        if (parent_category) {
+            const { _id, name, slug } = parent_category;
+            const ancest = [...parent_category.ancestors];
+            ancest.unshift({ _id, name, slug })
+            const category = await Category.findByIdAndUpdate(id, { $set: { "ancestors": ancest } });
+        }
+    } catch (err) {
+        console.log(err.message)
+    }
+}
 module.exports = router;
