@@ -1,14 +1,14 @@
 var mongoose = require("mongoose");
 const categorySchema = new mongoose.Schema({
     name: String,
-    user: {
-        id: {
+    // user: {
+    //     id: {
 
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        },
-        username: String
-    },
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: "User"
+    //     },
+    //     username: String
+    // },
     slug: { type: String, index: true },
     parent: {
         type: mongoose.Schema.Types.ObjectId,
